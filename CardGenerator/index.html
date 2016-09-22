@@ -35,18 +35,19 @@
             border: 1px solid black;
         }
     </style>
+		<link rel="stylesheet" type='text/css' href='contraption.css' />
 </head>
 
 <body>
-<div id="csvFileLabel">CSV File: 
+<div id="csvFileLabel">CSV File:
     <input type="file" id="files" name="files[]" />
 </div>
-<div id="cssFileLabel">CSS File:
+<!-- <div id="cssFileLabel">CSS File:
     <input type="file" id="cssfile" name="css" />
-</div>
-    
-    
-    
+</div> -->
+
+
+
 <script>
   function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
@@ -64,7 +65,7 @@
                                 header: true,
                                 dynamicTyping: true
                             });
-          
+
 
           layoutCards(results);
         };
@@ -95,14 +96,32 @@
     }
   }
 
+	function stars(num){
+		return "<span class='star'>*</span>".repeat(num);
+	}
+	function complexityTable(num){
+		result = "<table class='complexity'>";
+		if (num > 4) {
+			result += "<tr>";
+			result += "<td></td>".repeat(4);
+			result += "</tr>";
+			num -= 4;
+		}
+		result += "<tr>";
+		result += "<td></td>".repeat(num);
+		result += "</tr>";
+		result += "</table>"
+		return result
+	}
+
   function layoutCards(results) {
     $( "#csvFileLabel" ).remove();
     $( "#list" ).remove();
     $( "#fields" ).remove();
-    if (results.errors.length !== 0) { 
-        alert("There were errors in your csv file.") 
+    if (results.errors.length !== 0) {
+        alert("There were errors in your csv file.")
     };
-    
+
 
     var row;
     var card;
@@ -112,11 +131,11 @@
     var pages = cards.length/9 + 1;
 
     for (var i = 0; i < pages; i++) {
-        
+
     };
 
 
-    
+
     for (var i=0; i < numOfRows; i++) {
       if (i%3===0) {
         page = document.createElement('div');
@@ -135,8 +154,14 @@
         for (var k = 0; k < results.results.fields.length; k++) {
             var cardElement = document.createElement('div');
             var field = results.results.fields[k];
-            cardElement.setAttribute('class', results.results.fields[k]);
-            cardElement.innerHTML = cardResult[field];
+            cardElement.setAttribute('class', field);
+						if (field == "Stars") {
+							cardElement.innerHTML = stars(cardResult[field]);
+						} else if (field == "Complexity") {
+							cardElement.innerHTML = complexityTable(cardResult[field]);
+						} else {
+							cardElement.innerHTML = cardResult[field];
+						}
             card.appendChild(cardElement);
         };
         row.appendChild(card);
