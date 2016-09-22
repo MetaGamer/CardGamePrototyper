@@ -1,5 +1,8 @@
-PrototypeCard
+PrototypeCard For "Contraption" game
 =============
+
+This fork of astrism/CardGamePrototyper has been customized to produce cards for
+a specific game in development.
 
 Prototype Card Generator
 
