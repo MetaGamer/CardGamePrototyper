@@ -96,20 +96,35 @@
     }
   }
 
-	function stars(num){
-		return "<span class='star'>*</span>".repeat(num);
+	function complexity(num){
+		return "<span class='stars'>*</span>".repeat(num);
 	}
-	function complexityTable(num){
-		result = "<table class='complexity'>";
-		if (num > 4) {
-			result += "<tr>";
-			result += "<td></td>".repeat(4);
-			result += "</tr>";
-			num -= 4;
+	function fuelStore(num){
+		if (num > 0) {
+			return "<span class='fuelstore'>Fuel Storage = " + num +"</span>";
+		} else {
+			return "";
 		}
-		result += "<tr>";
-		result += "<td></td>".repeat(num);
-		result += "</tr>";
+	}
+	function partsTable(num, spare){
+		result = "<table class='parts'>";
+		var tot = num + spare;
+		for (var part = 0; part < tot; part++) {
+			if (part % 4 === 0) {
+				result += "<tr>";
+			}
+			if (part < num) {
+				result += "<td class='part'></td>";
+			} else {
+				result += "<td class='spare'></td>";
+			}
+			if (part % 4 === 3) {
+				result += "</tr>";
+			} 
+		}
+		if (part % 4 !== 3) {
+			result += "</tr>";
+		}
 		result += "</table>"
 		return result
 	}
@@ -155,10 +170,12 @@
             var cardElement = document.createElement('div');
             var field = results.results.fields[k];
             cardElement.setAttribute('class', field);
-						if (field == "Stars") {
-							cardElement.innerHTML = stars(cardResult[field]);
-						} else if (field == "Complexity") {
-							cardElement.innerHTML = complexityTable(cardResult[field]);
+						if (field == "Complexity") {
+							cardElement.innerHTML = complexity(cardResult[field]);
+						} else if (field == "Parts") {
+							cardElement.innerHTML = partsTable(cardResult[field],cardResult["SpareParts"]);
+						} else if (field == "FuelStore") {
+							cardElement.innerHTML = fuelStore(cardResult[field]);
 						} else {
 							cardElement.innerHTML = cardResult[field];
 						}
