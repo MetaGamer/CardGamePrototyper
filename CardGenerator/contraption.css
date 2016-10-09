@@ -14,11 +14,12 @@
 
 .card .complexity {
   position: absolute;
-  right: -0.2em;
+  right: -0.33em;
   width: 30%;
   text-align: center;
   top: 55px;
-  font-size: 120%;
+  font-size: 80%;
+  letter-spacing: -0.15em;
 }
 
 .card .mass {
@@ -27,10 +28,10 @@
   width: 15%;
   height: 1.5em;
   text-align: center;
-  margin-right: -0.1em;
+  margin-right: 0em;
 
   font-size: 200%;
-  padding: 0.5em 0.453em;
+  padding: 0.5em 0.41em;
   top: 0;
   background: url('weight1600.png');
   background-size: contain;
@@ -94,7 +95,7 @@
 
 .card .SerialNumber {
   position: absolute;
-  bottom: 3%;
+  bottom: 2px;
   right: 5%;
   font-size: 60%;
 }
@@ -102,3 +103,4 @@
 .Power, .DeckCount, .PowerOverCost, .VarOverPower, .DesignType, .Duplicate, .SpareParts {
   display: none;
 }
+

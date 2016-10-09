@@ -11,23 +11,23 @@
             max-height:100%;
         }
         .page {
-            width: 648px;
-            height: 864px;
+            width: 720px;
+            height: 1008px;
             margin: 0px;
             padding 0px;
             page-break-after: always;
         }
 
         .row {
-            width: 648px;
-            height: 286px;
+            width: 720px;
+            height: 334px;
             margin: 0px;
             padding 0px;
             position: relative;
         }
         .card {
-            width: 214px;
-            height: 286px;
+            width: 238px;
+            height: 334px;
             margin: 0px;
             position: absolute;
             top: 0px;
@@ -97,7 +97,7 @@
   }
 
 	function complexity(num){
-		return "<span class='stars'>*</span>".repeat(num);
+		return "<span class='stars'>&#9733</span>".repeat(num);
 	}
 	function fuelStore(num){
 		if (num > 0) {
@@ -165,7 +165,7 @@
         if (!cardResult) { return };
         card = document.createElement('div');
         card.setAttribute('class', 'card');
-        card.style.left = j*216 + "px";
+        card.style.left = j*240 + "px";
         for (var k = 0; k < results.results.fields.length; k++) {
             var cardElement = document.createElement('div');
             var field = results.results.fields[k];
@@ -192,3 +192,4 @@
 </script>
 </body>
 </html>
+
